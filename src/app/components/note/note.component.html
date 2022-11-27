@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="list row">
+    <div class="col m-5">
+      <h4>Note</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let note of notes; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveTutorial(note, i)"
+        >
+          {{ note.Title }}
+        </li>
+      </ul>
+    </div>
+    <div class="col m-5">
+      <div *ngIf="currentNote">
+       <span> Titolo:<h2>{{currentNote.Title}} </h2>
+        </span>
+        <span> Informazione:<h2> {{currentNote.Description}} </h2>
+         </span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
