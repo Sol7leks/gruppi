@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { map } from 'rxjs/operators';
+import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Note } from 'src/app/models/note.model';
 @Component({
@@ -15,19 +16,19 @@ export class NoteComponent implements OnInit {
   currentIndex = -1;
   title = '';
 
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(private firebaseService: FirebaseService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.getNotes();
   }
 
   refreshList(): void {
     this.currentNote = undefined;
     this.currentIndex = -1;
-    this.retrieveTutorials();
+    this.getNotes();
   }
 
-  retrieveTutorials(): void {
+  getNotes(): void {
     this.firebaseService.getAll().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -36,11 +37,25 @@ export class NoteComponent implements OnInit {
       )
     ).subscribe(data => {
       this.notes = data;
+      console.log(this.notes)
     });
   }
 
-  setActiveTutorial(tutorial: Note, index: number): void {
+  setNote(tutorial: Note, index: number): void {
     this.currentNote = tutorial;
     this.currentIndex = index;
   }
+
+  createnote(){
+    var note:Note={
+      Date:new Date(),
+      Title:'Titolo',
+      Description:'...'
+    }
+    this.firebaseService.create(note)
+  }
+  open(content:any) {
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+	}
 }
+
