@@ -11,16 +11,16 @@ import { AppComponent } from './app.component';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CreateNoteComponent } from './create-note/create-note.component';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { NoteComponent } from './components/note/note.component';
+import { CreateNoteComponent } from './components/create-note/create-note.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
-    CreateNoteComponent,
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    CreateNoteComponent
   ],
   imports: [
     BrowserModule,

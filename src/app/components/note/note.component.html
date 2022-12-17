@@ -12,9 +12,9 @@
             <div *ngIf="currentNote">
                 <div class="row">
                     <div class="col">
-                        <span> Titolo: <h2> {{currentNote.Title}}</h2> 
+                        <span> Titolo: <h2> {{currentNote!.Title}}</h2>
                   </span>
-                        <span> Informazione:<h2> {{currentNote.Description}} </h2>
+                        <span> Informazione:<h2> {{currentNote!.Description}} </h2>
                   </span>
                     </div>
                     <div class="col"><button class="btn btn-primary" (click)="openDialog()">Open dialog</button>
