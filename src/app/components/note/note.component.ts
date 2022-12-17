@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { map } from 'rxjs/operators';
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Note } from 'src/app/models/note.model';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -16,7 +17,7 @@ export class NoteComponent implements OnInit {
   currentIndex = -1;
   title = '';
 
-  constructor(private firebaseService: FirebaseService,private modalService: NgbModal) { }
+  constructor(private firebaseService: FirebaseService,private modalService: NgbModal,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getNotes();
@@ -45,17 +46,12 @@ export class NoteComponent implements OnInit {
     this.currentNote = Note;
     this.currentIndex = index;
   }
-
-  createnote(Titolo:String,Descrizione:String){
-    var note:Note={
-      Date:new Date(),
-      Title:Titolo,
-      Description:Descrizione,
-    }
-    this.firebaseService.create(note)
+  openDialog() {
+    this.dialog.open(UpdateNoteComponent, {
+      data: {
+       
+      },
+    });
   }
-  open(content:any) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
-	}
 }
 

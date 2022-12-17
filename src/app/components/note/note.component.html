@@ -10,42 +10,23 @@
         </div>
         <div class="col m-5">
             <div *ngIf="currentNote">
-                <span> Titolo: 
-                  <input type="text" [value]="currentNote.Title">
-        </span>
-                <span> Informazione:<h2> {{currentNote.Description}} </h2>
-        </span>
-            </div>
-
-        </div>
-        <div class="col m-5">
-            <button class="btn btn-outline-primary" (click)="open(content)">Crea Nota</button>
-
-        </div>
-        <ng-template #content let-modal>
-            <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Nuova Nota</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <div class="row">
-                            <label for="notes">Titolo</label>
-                            <input #titolo type="text">
-                        </div>
-                        <div class="row">
-                            <label for="notes">Descrizione</label>
-                            <input #descrizione type="text">
-                        </div>
-
+                <div class="row">
+                    <div class="col">
+                        <span> Titolo: 
+                            <input type="text" [value]="currentNote.Title">
+                  </span>
+                        <span> Informazione:<h2> {{currentNote.Description}} </h2>
+                  </span>
                     </div>
-                </form>
+                    <div class="col"><button mat-button (click)="openDialog()">Open dialog</button>
+                    </div>
+                </div>
+
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" (click)="createnote(titolo.value,descrizione.value);modal.close()">Salva</button>
-            </div>
-        </ng-template>
+
+        </div>
+
+
 
 
     </div>

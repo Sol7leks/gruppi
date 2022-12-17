@@ -12,12 +12,12 @@ import { AppComponent } from './app.component';
 import { NoteComponent } from './components/note/note.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateNoteComponent } from './create-note/create-note.component';
-
-@NgModule({
+import { UpdateNoteComponent } from './components/update-note/update-note.component';@NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
-    CreateNoteComponent
+    CreateNoteComponent,
+    UpdateNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,8 @@ import { CreateNoteComponent } from './create-note/create-note.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    NgbModule, // for firestore
+    NgbModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
