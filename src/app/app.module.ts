@@ -8,11 +8,14 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
-import { NoteComponent } from './components/note/note.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateNoteComponent } from './create-note/create-note.component';
-import { UpdateNoteComponent } from './components/update-note/update-note.component';@NgModule({
+import { UpdateNoteComponent } from './components/update-note/update-note.component';
+import { NoteComponent } from './components/note/note.component';
+
+@NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
@@ -26,7 +29,8 @@ import { UpdateNoteComponent } from './components/update-note/update-note.compon
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     NgbModule,
-   
+    MatDialogModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
