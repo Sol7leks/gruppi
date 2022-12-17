@@ -1,5 +1,5 @@
 export class Note {
-  id?: String;
+  id?: string;
   Title?: String;
   Description?: String;
   Date?: Date;
