@@ -12,14 +12,14 @@
             <div *ngIf="currentNote">
                 <div class="row">
                     <div class="col">
-                        <span> Titolo: 
+                        <span> Titolo:
                             <input type="text" [value]="currentNote.Title">
                   </span>
                         <span> Informazione:<h2> {{currentNote.Description}} </h2>
                   </span>
                     </div>
-                    <div class="col"><button mat-button (click)="openDialog()">Open dialog</button>
-                    </div>
+                    <!-- <div class="col"><button mat-button (click)="openDialog()">Open dialog</button>
+                    </div> -->
                 </div>
 
             </div>
