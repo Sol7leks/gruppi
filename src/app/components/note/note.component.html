@@ -10,7 +10,8 @@
         </div>
         <div class="col m-5">
             <div *ngIf="currentNote">
-                <span> Titolo:<h2>{{currentNote.Title}} </h2>
+                <span> Titolo: 
+                  <input type="text" [value]="currentNote.Title">
         </span>
                 <span> Informazione:<h2> {{currentNote.Description}} </h2>
         </span>
@@ -18,6 +19,8 @@
 
         </div>
         <div class="col m-5">
+            <button class="btn btn-outline-primary" (click)="open(content)">Crea Nota</button>
+
         </div>
         <ng-template #content let-modal>
             <div class="modal-header">
@@ -27,21 +30,23 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <div class="input-group">
+                        <div class="row">
                             <label for="notes">Titolo</label>
-                            <input type="text">
-                            <label for="notes">Descrizione</label>
-                            <input type="text">
-                            <button class="btn btn-primary" (click)="createnote();modal.close()">Salva</button>;
+                            <input #titolo type="text">
                         </div>
+                        <div class="row">
+                            <label for="notes">Descrizione</label>
+                            <input #descrizione type="text">
+                        </div>
+
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
+                <button class="btn btn-primary" (click)="createnote(titolo.value,descrizione.value);modal.close()">Salva</button>
             </div>
         </ng-template>
 
-        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Crea Nota</button>
 
     </div>
 

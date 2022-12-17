@@ -1,6 +1,6 @@
 export class Note {
-  id?: string;
-  Title?: string;
-  Description?: string;
+  id?: String;
+  Title?: String;
+  Description?: String;
   Date?: Date;
 }

@@ -41,16 +41,16 @@ export class NoteComponent implements OnInit {
     });
   }
 
-  setNote(tutorial: Note, index: number): void {
-    this.currentNote = tutorial;
+  setNote(Note: Note, index: number): void {
+    this.currentNote = Note;
     this.currentIndex = index;
   }
 
-  createnote(){
+  createnote(Titolo:String,Descrizione:String){
     var note:Note={
       Date:new Date(),
-      Title:'Titolo',
-      Description:'...'
+      Title:Titolo,
+      Description:Descrizione,
     }
     this.firebaseService.create(note)
   }
