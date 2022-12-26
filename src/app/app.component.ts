@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from 'src/app/services/firebase.service';
-import { map } from 'rxjs/operators';
-import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Note } from './models/note.model';
+import { CreateNoteComponent } from './components/create-note/create-note.component';
+import {MatDialog,MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +8,16 @@ import { Note } from './models/note.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
 
-  constructor(private firebaseService: FirebaseService,private modalService: NgbModal) { }
+  constructor(public dialog: MatDialog) { }
  
   ngOnInit(): void {
   }
   
-  createnote(Titolo:String,Descrizione:String){
-    var note:Note={
-      Date:new Date(),
-      Title:Titolo,
-      Description:Descrizione,
-    }
-    this.firebaseService.create(note)
+  openDialog() {
+    this.dialog.open(CreateNoteComponent, {});
   }
-  open(content:any) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
-	}
 }

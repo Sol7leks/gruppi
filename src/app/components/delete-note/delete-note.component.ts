@@ -3,29 +3,25 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatDialogContent,MatDialogActio
 import { Note } from 'src/app/models/note.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
 @Component({
-  selector: 'app-update-note',
-  templateUrl: './update-note.component.html',
-  styleUrls: ['./update-note.component.css']
+  selector: 'app-delete-note',
+  templateUrl: './delete-note.component.html',
+  styleUrls: ['./delete-note.component.css']
 })
-export class UpdateNoteComponent implements OnInit {
-
+export class DeleteNoteComponent implements OnInit {
   currentNote : Note;
 
   constructor(
     public firebaseService:FirebaseService,
-    public dialogRef: MatDialogRef<UpdateNoteComponent>,
+    public dialogRef: MatDialogRef<DeleteNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any) {
       this.currentNote = this.data["data"]
     }
-
-  ngOnInit(): void {
-  }
-
-  updateNote(Title:String,Description:String){
-    var data={
-Title:Title,
-Description:Description
+    ngOnInit(): void {
     }
-    this.firebaseService.update(this.currentNote.id??'',data)
-  }
+  
+    deleteNote(){
+      this.firebaseService.delete(this.currentNote.id!).then(()=>{location.reload()})
+      
+    }
 }
+

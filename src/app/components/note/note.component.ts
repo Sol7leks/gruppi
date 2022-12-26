@@ -5,6 +5,7 @@ import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstra
 import {MatDialog,MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Note } from 'src/app/models/note.model';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { DeleteNoteComponent } from '../delete-note/delete-note.component';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -48,6 +49,14 @@ export class NoteComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(UpdateNoteComponent, {
+      data: {
+          data: this.currentNote
+      },
+    });
+  }
+
+  openDelete() {
+    this.dialog.open(DeleteNoteComponent, {
       data: {
           data: this.currentNote
       },

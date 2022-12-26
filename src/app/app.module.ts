@@ -14,13 +14,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { NoteComponent } from './components/note/note.component';
 import { CreateNoteComponent } from './components/create-note/create-note.component';
+import { DeleteNoteComponent } from './components/delete-note/delete-note.component';
+import {ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
     UpdateNoteComponent,
-    CreateNoteComponent
+    CreateNoteComponent,
+    DeleteNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,9 @@ import { CreateNoteComponent } from './components/create-note/create-note.compon
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     NgbModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
+
 
   ],
   providers: [],

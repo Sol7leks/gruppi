@@ -1,34 +1,11 @@
 <div>
-    <nav style="background-color:rgb(255, 225, 0) !important" class="navbar  fixed-top justify-content-between  flex-md-nowrap p-2 mb-3">
-        <a href="tutorials" class="navbar-brand">Note</a>
+    <nav style="background-color:rgb(1, 42, 145) !important" class="navbar  fixed-top justify-content-between  flex-md-nowrap p-2 mb-3">
+        <a class="navbar-brand">Note</a>
 
-        <button class="btn btn-outline-primary " (click)="open(content)">Crea Nota</button>
+        <button class="btn btn-primary" (click)="openDialog()">Create Note</button>
 
     </nav>
-
     <div class="container mt-3">
         <router-outlet></router-outlet>
-
     </div>
-    <ng-template #content let-modal>
-        <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Nuova Nota</h4>
-            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="mb-3">
-                    <label for="Name">Title:</label>
-                    <input #titolo type="text" placeholder="Enter Title" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="Surname">Description:</label>
-                    <input #descrizione type="text" placeholder="Enter Description" class="form-control">
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" (click)="createnote(titolo.value,descrizione.value);modal.close()">Salva</button>
-        </div>
-    </ng-template>
 </div>

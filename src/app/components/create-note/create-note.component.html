@@ -1,1 +1,28 @@
-<p>create-note works!</p>
+<h2 mat-dialog-title>
+    Create Note</h2>
+<div mat-dialog-content>
+
+    <form [formGroup]="createNote">
+
+        <div class="mb-3">
+            <label for="Name">Title:</label>
+            <input #titolo type="text" placeholder="Enter Title" class="form-control" formControlName="title" required [(ngModel)]="newNote.Title">
+            <div class="error" *ngIf="createNote.controls['title'].errors  && Title!.touched">
+                <div *ngIf="Title!.errors?.['required']">Title is required</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Surname">Description:</label>
+            <input #descrizione type="text" placeholder="Enter Description" class="form-control" formControlName="description" required [(ngModel)]="newNote.Description">
+            <div class="error" *ngIf="createNote.controls['description'].errors && Description!.touched">
+                <div *ngIf="Description!.errors?.['required']">Description is required</div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button cdkFocusInitial (click)="createnote()">Create</button>
+</div>
