@@ -6,27 +6,27 @@ import { Note } from '../models/note.model';
 })
 
 export class FirebaseService {
-  private dbPath = '/Notes';
+  private gPath = '/Groups';
 
-  notesRef: AngularFirestoreCollection<Note>;
+  groupsRef: AngularFirestoreCollection<Note>;
 
   constructor(private db: AngularFirestore) {
-    this.notesRef = db.collection(this.dbPath);
+    this.groupsRef = db.collection(this.gPath);
   }
 
   getAll(): AngularFirestoreCollection<Note> {
-    return this.notesRef;
+    return this.groupsRef;
   }
 
   create(Note: Note): any {
-    return this.notesRef.add({ ...Note });
+    return this.groupsRef.add({ ...Note });
   }
 
   update(id: string, data: any): Promise<void> {
-    return this.notesRef.doc(id).update(data);
+    return this.groupsRef.doc(id).update(data);
   }
 
   delete(id: string): Promise<void> {
-    return this.notesRef.doc(id).delete();
+    return this.groupsRef.doc(id).delete();
   }
 }
